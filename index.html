@@ -4406,7 +4406,7 @@ function animateGlow() {
       animateClose(document.getElementById('singleReceiptReviewModalOverlay'));
       
       try {
-          let response = await fetch('https://receipt-app-black.vercel.app/generate-receipt', {
+        let response = await fetch('https://receipt-app-black.vercel.app/generate-receipt', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload)
