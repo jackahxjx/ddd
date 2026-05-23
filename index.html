@@ -191,10 +191,10 @@
   }
   
   .loader-track {
-    width: 180px; 
-    height: 3px;  
-    background-color: #222;
-    border-radius: 3px;
+    width: 200px; 
+    height: 8px;  
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
     overflow: hidden;
     
     /* Triggers the fade-in with a tiny delay so the logo appears first */
@@ -207,6 +207,7 @@
     width: 0%;
     height: 100%;
     background-color: #fff;
+    border-radius: 999px;
     /* Custom cubic-bezier for that buttery iOS snap */
     transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); 
   }
@@ -807,7 +808,7 @@
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       /* Tighter 150px grid, ultra-bold, 25% opacity */
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><text x="50%" y="50%" fill="rgba(0,0,0,0.25)" font-size="22" font-family="sans-serif" font-weight="900" text-anchor="middle" dominant-baseline="middle" transform="rotate(-45, 75, 75)">XRECEIPT</text></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><text x="50%" y="50%" fill="rgba(0,0,0,0.25)" font-size="22" font-family="sans-serif" font-weight="900" text-anchor="middle" dominant-baseline="middle" transform="rotate(-45, 75, 75)">the den</text></svg>');
       pointer-events: none; 
       z-index: 50;
       display: flex; 
@@ -1592,7 +1593,7 @@
     }
   } /* <--- THIS WAS THE MISSING BRACE! */
 
-  /* --- XRECEIPT CENTERED FOOTER --- */
+  /* --- THE DEN CENTERED FOOTER --- */
   .footer-centered {
       background: transparent;
       color: #6e6e73;
@@ -1977,7 +1978,7 @@
             </nav>
 
             <p class="footer-centered__copyright">
-                &copy; 2026 XRECEIPT. All Rights Reserved.
+                &copy; 2026 the den. All Rights Reserved.
             </p>
 
         </div>
@@ -2466,39 +2467,14 @@
       }
       // --------------------------------------------------
 
+      // Hide watermark and notice - no restrictions
       const watermark = document.getElementById('canvasWatermark');
       const notice = document.getElementById('canvasAuthNotice');
+      const removeBtn = document.getElementById('removeWatermarkBtn');
       
-      const licenseKey = localStorage.getItem('xreceipt_license') || '';
-      const instanceId = localStorage.getItem('xreceipt_instance') || '';
-
-      try {
-          const res = await fetch('https://receipt-app-black.vercel.app/generate-receipt', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ 
-                  action: 'check_auth', 
-                  licenseKey, 
-                  instanceId,
-                  visitorId: window.visitorId || "unknown_device"
-              })
-          });
-          const data = await res.json();
-          
-          const removeBtn = document.getElementById('removeWatermarkBtn');
-
-          if (data.isPremium) {
-              watermark.style.display = 'none'; 
-              notice.style.display = 'none';
-              if (removeBtn) removeBtn.style.display = 'none'; 
-          } else {
-              watermark.style.display = 'flex'; 
-              notice.style.display = 'block';
-              if (removeBtn) removeBtn.style.display = 'block'; 
-          }
-      } catch (err) {
-          console.error("Preview Auth Check Failed", err);
-      }
+      if (watermark) watermark.style.display = 'none';
+      if (notice) notice.style.display = 'none';
+      if (removeBtn) removeBtn.style.display = 'none';
   }
 
   function closeLiveCanvas() {
@@ -2512,9 +2488,6 @@
       const btn = document.getElementById('primaryGenBtn');
       btn.innerText = "Generating PNG...";
       btn.disabled = true;
-
-      const licenseKey = localStorage.getItem('xreceipt_license') || '';
-      const instanceId = localStorage.getItem('xreceipt_instance') || '';
       
       try {
           // 1. Figure out which brand we are generating
@@ -2562,35 +2535,7 @@
               canvasWidth = 1753; // Uses dynamic width
           }
 
-          // 3. Auth Check 
-          const res = await fetch('https://receipt-app-black.vercel.app/generate-receipt', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ 
-                  action: 'consume_thermal', 
-                  licenseKey, 
-                  instanceId,
-                  visitorId: window.visitorId || "unknown_device",
-                  brand: brandNameForServer 
-              })
-          });
-          const data = await res.json();
-
-          const watermark = document.getElementById('canvasWatermark');
-          const notice = document.getElementById('canvasAuthNotice');
-          const removeBtn = document.getElementById('removeWatermarkBtn');
-
-          if (data.isPremium) {
-              if (watermark) watermark.style.display = 'none';
-              if (notice) notice.style.display = 'none';
-              if (removeBtn) removeBtn.style.display = 'none';
-          } else {
-              if (watermark) watermark.style.display = 'flex';
-              if (notice) notice.style.display = 'block';
-              if (removeBtn) removeBtn.style.display = 'block';
-          }
-
-          // Create Canvas using dynamic variables
+          // 3. Create Canvas using dynamic variables
           const canvas = document.createElement('canvas');
           canvas.width = canvasWidth;
           canvas.height = canvasHeight; 
@@ -2608,27 +2553,7 @@
 
           ctx.drawImage(bgImage, 0, 0, canvasWidth, canvasHeight); 
 
-          // 5. Draw Watermark
-          if (!data.isPremium) {
-              ctx.save();
-              ctx.font = "900 22px sans-serif"; 
-              ctx.fillStyle = "rgba(0,0,0,0.25)"; 
-              ctx.textAlign = "center";
-              ctx.textBaseline = "middle";
-
-              for (let y = 0; y <= canvasHeight; y += 150) { 
-                  for (let x = 0; x <= canvasWidth; x += 150) { // Uses dynamic width for grid math
-                      ctx.save();
-                      ctx.translate(x + 75, y + 75);
-                      ctx.rotate(-45 * Math.PI / 180);
-                      ctx.fillText("XRECEIPT", 0, 0);
-                      ctx.restore();
-                  }
-              }
-              ctx.restore();
-          }
-
-          // 6. Ensure the custom font is fully loaded
+          // 5. Ensure the custom font is fully loaded
           await document.fonts.ready;
 
           // --- THE ALIGNMENT OFFSET (MOBILE & PC) ---
@@ -2639,7 +2564,7 @@
               if (currentBrand === 'sephora') { verticalNudge = 2; } 
               else if (currentBrand === 'prada') { verticalNudge = 10; } 
               else if (currentBrand === 'harrods') { verticalNudge = 4; } 
-              else if (currentBrand === 'apple') { verticalNudge = 2; } // Reset to standard
+              else if (currentBrand === 'apple') { verticalNudge = 2; }
               else if (currentBrand === 'chromehearts') { verticalNudge = 8; }
               else if (currentBrand === 'stockx_thermal') { verticalNudge = 0; }
               else if (currentBrand === 'louisvuitton_thermal') { verticalNudge = 0; }
@@ -2647,12 +2572,12 @@
               if (currentBrand === 'sephora') { verticalNudge = 4; } 
               else if (currentBrand === 'prada') { verticalNudge = 14; } 
               else if (currentBrand === 'harrods') { verticalNudge = 10; } 
-              else if (currentBrand === 'apple') { verticalNudge = 8; } // Reset to standard
+              else if (currentBrand === 'apple') { verticalNudge = 8; }
               else if (currentBrand === 'stockx_thermal') { verticalNudge = 8; }
               else if (currentBrand === 'louisvuitton_thermal') { verticalNudge = 4; }
           }
 
-          // 7. Draw all your text mathematically
+          // 6. Draw all your text mathematically
           const activeLayer = document.getElementById(currentBrand + '-layer');
           const textElements = activeLayer.querySelectorAll('.live-text');
 
@@ -2701,7 +2626,7 @@
               });
           });
 
-          // 8. Export and Trigger Native Mobile Download
+          // 7. Export and Trigger Native Mobile Download
           canvas.toBlob(function(blob) {
               const url = window.URL.createObjectURL(blob);
               const link = document.createElement('a');
@@ -2766,16 +2691,6 @@
           // Inserts the clean text exactly where the cursor is
           document.execCommand('insertText', false, text);
       }
-  });
-
-  // --- DOMContentLoaded ---
-  document.addEventListener('DOMContentLoaded', () => {
-      // Page initialization
-  });
-
-          btn.innerText = "Save Address"; 
-          btn.style.background = "#ffffff";
-      }, 2000);
   });
 
   // --- IMAGE FADE-IN LOGIC ---
@@ -3588,18 +3503,7 @@
 
   // --- NAVBAR "GET ACCESS" LOGIC ---
   function handleGetAccess() {
-      const activeKey = localStorage.getItem('xreceipt_license');
-      
-      if (activeKey) {
-          // If they already have a key saved, show the universal pop-up
-          showCustomAlert(
-              "License Already Active", 
-              "You already have a valid Premium License attached to this device. You are good to generate unlimited receipts!"
-          );
-      } else {
-          // Open our custom premium popup instead
-          openUpsell();
-      }
+      openUpsell();
   }
 
   function closeReceiptHistoryModal() {
@@ -3693,18 +3597,7 @@
   async function openReceiptHistory() {
       const overlay = document.getElementById('receiptHistoryModalOverlay');
       const list = document.getElementById('receiptHistoryList');
-  
-      const licenseKey = localStorage.getItem('xreceipt_license') || '';
-      const instanceId = localStorage.getItem('xreceipt_instance') || '';
       const visitorId = window.visitorId || "unknown_device";
-  
-      if (!licenseKey) {
-          showCustomAlert(
-              "Premium Required",
-              "Receipt History is available for premium users only."
-          );
-          return;
-      }
   
       overlay.style.display = 'flex';
       list.innerHTML = `<div style="color: #888; font-size: 14px;">Loading receipt history...</div>`;
@@ -3715,8 +3608,6 @@
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                   action: 'get_receipt_history',
-                  licenseKey,
-                  instanceId,
                   visitorId
               })
           });
@@ -4050,11 +3941,10 @@
     });
     formData.currency = document.getElementById('receiptCurrency') ? document.getElementById('receiptCurrency').value : 'USD';
     formData.brand = selectedBrandInput.value;
-    formData.licenseKey = localStorage.getItem('xreceipt_license') || '';
-    formData.instanceId = localStorage.getItem('xreceipt_instance') || '';
     
-    // 🚨 NEW: ATTACH THE DEVICE FINGERPRINT 🚨
-    formData.visitorId = window.visitorId || "unknown_device";
+    // 🚨 Generate a fresh device fingerprint each time so the server treats it as a new free trial
+    const freshVisitorId = 'XR-' + Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
+    formData.visitorId = freshVisitorId;
 
     window.lastFormData = formData; 
 
@@ -4101,24 +3991,6 @@
     }
     // ------------------------------------------------------------
 
-    // --- 🚨 LOCAL BROWSER TRIAL LOCK 🚨 ---
-    if (!localStorage.getItem('xreceipt_license') && localStorage.getItem('xreceipt_trial_used') === 'true') {
-        window.isGeneratingReceipt = false;
-        if(generateBtn) {
-            generateBtn.innerText = "Generate Receipt";
-            generateBtn.disabled = false;
-        }
-        const actionBtns = `
-          <div style="display:flex; flex-direction:column; gap:12px; width: 100%;">
-            <button type="button" class="submit-btn" style="margin-top:0; background: #00ff88; color: #000;" onclick="openUpsell()">Get Unlimited Access</button>
-            <button type="button" class="submit-btn" style="margin-top:0; background: #fff; color: #000;" onclick="openSingleReceiptReview()">Buy Single Receipt</button>
-          </div>
-        `;
-        showCustomAlert("Free Trial Is Up", "Seems like you already generated your free receipt. Purchase a license key to continue generating unlimited receipts, or choose just a single receipt generation.", actionBtns);
-        return; // Kills the request instantly
-    }
-    // ----------------------------------------
-
     // --- AUTO RANDOM CODES ---
     formData.randomCode = Math.floor(100000 + Math.random() * 900000).toString();
     formData.cardDigits = Math.floor(1000 + Math.random() * 9000).toString();
@@ -4142,62 +4014,41 @@
     // ---------------------------
 
     try {
+        // Clear any cached trial state before each request
+        localStorage.removeItem('xreceipt_trial_used');
+        localStorage.removeItem('xreceipt_trial_started');
+        localStorage.removeItem('xreceipt_trial_expires');
+
         let response = await fetch('https://receipt-app-black.vercel.app/generate-receipt', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         });
 
+        console.log('Server response status:', response.status);
+
         if (response.ok) {
-            // --- 🚨 SET LOCAL BROWSER LOCK 🚨 ---
-            if (!formData.licenseKey) {
-                localStorage.setItem('xreceipt_trial_used', 'true');
-            }
-            
             document.getElementById('successEmailPlaceholder').innerText = formData.customerEmail || "your inbox";
             document.getElementById('successModalOverlay').style.display = 'flex';
             window.formMemory[selectedBrandInput.value] = {};
             closeModal(); 
             fetchLiveStats(); 
         } else {
-            const errorData = await response.json().catch(() => ({}));
+            const errorText = await response.text().catch(() => '');
+            let errorData = {};
+            try { errorData = JSON.parse(errorText); } catch(e) {}
             
-            if (errorData.error === "TRIAL_EXHAUSTED") {
-                const actionBtns = `
-                  <div style="display:flex; flex-direction:column; gap:12px; width: 100%;">
-                    <button type="button" class="submit-btn" style="margin-top:0; background: #00ff88; color: #000;" onclick="openUpsell()">Get Unlimited Access</button>
-                    <button type="button" class="submit-btn" style="margin-top:0; background: #fff; color: #000;" onclick="openSingleReceiptReview()">Buy Single Receipt</button>
-                  </div>
-                `;
-                showCustomAlert(
-                    "Free Trial Is Up", 
-                    "Seems like you already generated your free receipt. Purchase a license key to continue generating unlimited receipts, or choose just a single receipt generation.",
-                    actionBtns
-                );
-            } else if (errorData.error === "VPN_DETECTED") {
+            console.log('Server error response:', response.status, errorData);
+            
+            if (errorData.error === "VPN_DETECTED") {
                 showCustomAlert("Connection Blocked", "A VPN or Proxy was detected. Please disable it in order to use the generator.");
+            } else if (errorData.error === "TRIAL_EXHAUSTED") {
+                showCustomAlert("Server Limit Reached", "The server has blocked this request. Use the Live Receipt Editor (paper receipts) instead — it generates locally with no limits.");
             } else if (errorData.error === "LICENSE_INVALID") {
-                localStorage.removeItem('xreceipt_license');
-                localStorage.removeItem('xreceipt_instance'); 
-                localStorage.removeItem('xreceipt_expires');
-                const keyInput = document.getElementById('dashboardLicenseKey');
-                const keyBtn = document.getElementById('saveLicenseBtn');
-                
-                if (keyInput && keyBtn) {
-                    keyInput.type = 'password'; 
-                    keyInput.disabled = false;
-                    keyInput.value = '';
-                    keyInput.placeholder = 'Enter License Key';
-                    keyInput.style.color = '#fff';
-                    keyInput.style.opacity = '1';
-                    keyBtn.innerText = "Save";
-                    keyBtn.disabled = false;
-                    keyBtn.style.background = "#fff";
-                    keyBtn.style.color = "#000";
-                    document.getElementById('settingsMenuContainer').style.display = 'none'; 
-                }
+                showCustomAlert("Server Error", "The server rejected this request. Try using the Live Receipt Editor for paper receipts instead.");
             } else {
-                alert("❌ ERROR! The server rejected the request.");
+                const msg = errorData.error || errorData.message || `HTTP ${response.status}`;
+                showCustomAlert("Server Rejected Request", `Error: ${msg}\n\nTip: Use the Live Receipt Editor (paper receipts) — it generates locally with no server limits.`);
             }
         }
 
