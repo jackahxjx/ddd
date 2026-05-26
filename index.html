@@ -74,13 +74,13 @@
       bottom: 24px;
       right: 24px;
       width: 340px;
-      background: rgba(15, 15, 15, 0.95);
-      border: 1px solid rgba(88, 101, 242, 0.4); /* Discord's signature blurple border */
+      background: rgba(10, 10, 30, 0.95);
+      border: 1px solid rgba(59, 130, 246, 0.4);
       border-radius: 16px;
       padding: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(88, 101, 242, 0.15);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(59, 130, 246, 0.15);
       z-index: 9999;
-      transform: translateX(120%); /* Starts hidden off-screen to the right */
+      transform: translateX(120%);
       transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
       opacity: 0;
       display: flex;
@@ -89,7 +89,7 @@
   }
 
   .discord-toast.show {
-      transform: translateX(0); /* Slides in */
+      transform: translateX(0);
       opacity: 1;
   }
 
@@ -97,7 +97,7 @@
       position: absolute;
       top: 12px;
       right: 16px;
-      color: #888;
+      color: #6b7280;
       font-size: 24px;
       cursor: pointer;
       line-height: 1;
@@ -109,7 +109,7 @@
   .toast-content { display: flex; align-items: center; gap: 15px; }
 
   .toast-icon {
-      background: rgba(88, 101, 242, 0.1);
+      background: rgba(59, 130, 246, 0.1);
       padding: 12px;
       border-radius: 12px;
       display: flex;
@@ -122,10 +122,10 @@
 
   .toast-title { color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.5px; }
 
-  .toast-desc { color: #aaa; font-size: 13px; line-height: 1.4; }
+  .toast-desc { color: #9ca3af; font-size: 13px; line-height: 1.4; }
 
   .toast-btn {
-      background: #5865F2; /* Official Discord Blurple */
+      background: #3b82f6;
       color: #fff;
       text-align: center;
       padding: 12px;
@@ -138,7 +138,7 @@
       box-sizing: border-box;
   }
 
-  .toast-btn:hover { background: #4752C4; }
+  .toast-btn:hover { background: #2563eb; }
 
   @media (max-width: 768px) {
       .discord-toast {
@@ -206,9 +206,8 @@
   .loader-fill {
     width: 0%;
     height: 100%;
-    background-color: #fff;
+    background-color: #3b82f6;
     border-radius: 999px;
-    /* Custom cubic-bezier for that buttery iOS snap */
     transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); 
   }
 
@@ -248,13 +247,12 @@
       position: absolute;
       right: 0;
       top: 0;
-      bottom: 0; /* Stretches to the exact height of the preview tab */
+      bottom: 0;
       
-      /* Creates a much shorter, sharper fade */
-      background: linear-gradient(to left, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0) 100%);
-      padding: 0 12px 0 35px; /* Shrunk the width */
+      background: linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+      padding: 0 12px 0 35px;
       
-      color: #ffffff;
+      color: #3b82f6;
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
@@ -262,7 +260,7 @@
       z-index: 100;
       transition: opacity 0.3s ease;
       display: none; 
-      align-items: center; /* Keeps the text perfectly centered vertically */
+      align-items: center;
       gap: 6px;
   }
 
@@ -322,18 +320,18 @@
 
   .paper-badge {
       position: absolute;
-      top: -12px; /* Pulls it up to straddle the top border */
-      left: 50%; /* Pushes to the middle */
-      transform: translateX(-50%); /* Perfectly centers it */
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
       
-      color: #888;
+      color: #93c5fd;
       font-size: 9px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
       
-      background: #050505; /* Matches your body background so the card line behind it is hidden */
-      border: 1px solid rgba(255, 255, 255, 0.08); 
+      background: #000000;
+      border: 1px solid rgba(59, 130, 246, 0.3); 
       padding: 6px 12px; 
       border-radius: 50px; 
 
@@ -349,7 +347,7 @@
       display: flex;
       justify-content: center;
       background: #000;
-      border: 1px solid #333;
+      border: 1px solid rgba(59, 130, 246, 0.2);
       border-radius: 8px;
       margin-bottom: 20px;
       position: relative;
@@ -807,8 +805,7 @@
   .watermark-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      /* Tighter 150px grid, ultra-bold, 25% opacity */
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><text x="50%" y="50%" fill="rgba(0,0,0,0.25)" font-size="22" font-family="sans-serif" font-weight="900" text-anchor="middle" dominant-baseline="middle" transform="rotate(-45, 75, 75)">the den</text></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150"><text x="50%" y="50%" fill="rgba(59, 130, 246, 0.2)" font-size="22" font-family="sans-serif" font-weight="900" text-anchor="middle" dominant-baseline="middle" transform="rotate(-45, 75, 75)">the den</text></svg>');
       pointer-events: none; 
       z-index: 50;
       display: flex; 
@@ -819,7 +816,7 @@
       position: absolute; 
       outline: none;
       cursor: text;
-      background: rgba(0, 255, 136, 0.15); 
+      background: rgba(59, 130, 246, 0.15); 
       border-bottom: 1px dotted transparent;
       white-space: nowrap; 
       line-height: 1; 
@@ -827,21 +824,19 @@
       min-height: 1em; 
       display: inline-block;
 
-      /* --- ADD THESE TWO LINES --- */
       touch-action: pan-x pan-y; 
       -webkit-user-modify: read-write-plaintext-only;
   }
   
   .live-text:hover, .live-text:focus {
-      background: rgba(0, 255, 136, 0.3);
-      border-bottom: 1px dotted #000;
+      background: rgba(59, 130, 246, 0.3);
+      border-bottom: 1px dotted #3b82f6;
   }
 
   /* Hides green boxes during export */
   .export-mode .live-text {
       background: transparent !important;
       border-bottom: none !important;
-      /* (margin-left removed from here) */
   }
   
   /* Temporarily disables mobile scaling during the snapshot to fix coordinate bugs */
@@ -853,7 +848,7 @@
 
   /* --- MOBILE SCROLL OVERLAY --- */
   .mobile-scroll-overlay {
-      display: none; /* Hidden on desktop */
+      display: none;
   }
 
   @media (max-width: 768px) {
@@ -864,19 +859,17 @@
           justify-content: center;
           position: absolute;
           right: 0;
-          top: 55%; /* Centers it vertically over the table rows */
+          top: 55%;
           transform: translateY(-50%);
           
-          /* Creates a smooth dark fade so it sits perfectly over the text */
-          background: linear-gradient(to left, rgba(10,10,10,1) 40%, rgba(10,10,10,0));
-          padding: 20px 15px 20px 30px; 
+          background: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0));
+          padding: 20px 15px 20px 30px;
           
-          color: #888;
+          color: #3b82f6;
           font-size: 10px;
           font-weight: 700;
           text-transform: capitalize;
           
-          /* Crucial: Allows users to swipe right through the floating text! */
           pointer-events: none; 
           z-index: 10;
           border-radius: 0 20px 20px 0;
@@ -897,19 +890,19 @@
       cursor: pointer; 
       transition: background 0.2s ease;
   }
-  .settings-dropdown-btn:hover { background: #222; }
-  .settings-dropdown-btn.danger { color: #ff4444; }
+  .settings-dropdown-btn:hover { background: rgba(59, 130, 246, 0.15); }
+  .settings-dropdown-btn.danger { color: #ef4444; }
 
 /* --- GLOBAL ADDRESS FORM --- */
   .address-form-container {
     max-width: 600px;
     margin: 0 auto 60px auto;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(10, 10, 30, 0.75);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     border-radius: 20px;
     box-sizing: border-box;
     position: relative;
@@ -971,12 +964,12 @@
   max-height: 800px;
   border-radius: 50%;
   
-  /* THE FIX: Replaced background color + filter: blur with a pure gradient */
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%); 
+  /* Blue glow */
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0) 70%); 
   
   z-index: 0; 
   pointer-events: none;
-  touch-action: none; /* <--- ADD THIS LINE */
+  touch-action: none;
   top: 0; 
   left: 0; 
   transform: translate3d(50vw, 50vh, 0); 
@@ -1008,18 +1001,18 @@
 
 /* --- GLASSMORPHIC NAVBAR --- */
 .glass-navbar {
-    position: relative; /* This stops it from following your scroll */
+    position: relative;
     z-index: 100;
     width: 90%;
     max-width: 950px;
-    margin: 20px auto 30px auto; /* Added a little bottom margin to push the stats down */
+    margin: 20px auto 30px auto;
     padding: 16px 32px;
     border-radius: 24px;
-    background: rgba(255, 255, 255, 0.72); /* Liquid glass white */
+    background: rgba(10, 10, 30, 0.75);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1029,20 +1022,21 @@
 .glass-navbar .logo, 
 .glass-navbar .nav-actions button {
     font-family: 'Inter', sans-serif;
-    font-size: 24px; /* Slightly larger to match the heavy impact */
-    letter-spacing: -1px; /* Squeezes the letters together like your image */
+    font-size: 24px;
+    letter-spacing: -1px;
     text-transform: uppercase;
     font-weight: normal;
-    color: #1d1d1f;
+    color: #ffffff;
     text-shadow: none;
 }
 
 .glass-navbar .logo {
     font-family: 'Inter', sans-serif;
     font-weight: 800; 
-    font-size: 26px; /* A slightly wider font, needs a touch more size */
+    font-size: 26px;
     letter-spacing: -1px; 
     text-transform: uppercase;
+    color: #3b82f6;
 }
 
 .glass-navbar .nav-actions {
@@ -1056,11 +1050,13 @@
     font-size: 15px;
     cursor: pointer;
     padding: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    color: #ffffff;
 }
 
 .glass-navbar .nav-actions button:hover {
     opacity: 0.7;
+    color: #3b82f6;
 }
   /* Base settings matching a premium modern UI */
   body { 
@@ -1091,22 +1087,22 @@
   .brand-card { 
     aspect-ratio: 1 / 1; 
     display: flex;
-    position: relative; /* <-- Add this line */
+    position: relative;
     align-items: center; 
     justify-content: center; 
     padding: 10px; 
     
-    /* --- LIQUID GLASS --- */
-    background: rgba(255, 255, 255, 0.65);
+    /* --- DARK GLASS WITH BLUE --- */
+    background: rgba(10, 10, 30, 0.65);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     /* ------------------------- */
     
     border-radius: 24px; 
-    color: #555; 
+    color: #ffffff; 
     text-align: center;
     cursor: pointer; 
     font-size: 13px; 
@@ -1116,11 +1112,11 @@
   }
   
   .brand-card:hover { 
-    background-color: rgba(255, 255, 255, 0.85); 
-    border-color: rgba(200, 200, 205, 0.8);
-    color: #1d1d1f;
+    background-color: rgba(15, 15, 40, 0.85); 
+    border-color: rgba(59, 130, 246, 0.6);
+    color: #ffffff;
     transform: translateY(-4px); 
-    box-shadow: 0 12px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(59, 130, 246, 0.2);
   }
 
   @keyframes popIn {
@@ -1166,16 +1162,16 @@
   /* ------------------------ */
 
   .modal-box {
-    /* Liquid Glassmorphism effect */
-    background: rgba(255, 255, 255, 0.78);
+    /* Dark Glassmorphism effect */
+    background: rgba(10, 10, 30, 0.85);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     
-    color: #1d1d1f; 
+    color: #ffffff; 
     padding: 32px; 
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     
     width: 500px; 
     max-width: 90%; 
@@ -1203,27 +1199,25 @@
   }
   
   .close-btn { 
-    position: sticky; /* Keeps it locked to the screen while scrolling */
-    top: 16px; /* Stays exactly 16px from the top edge as you scroll */
-    float: right; /* Pushes it to the right corner */
-    margin-top: -16px; /* Pulls it up slightly to balance the modal's padding */
+    position: sticky;
+    top: 16px;
+    float: right;
+    margin-top: -16px;
     
-    /* Makes it a perfect square */
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     
-    /* The Box Styling */
-    background: #0a0a0a; 
-    border: 1px solid #333; 
+    background: #1e3a5f; 
+    border: 1px solid rgba(59, 130, 246, 0.3); 
     border-radius: 8px; 
     
     cursor: pointer; 
     font-weight: bold; 
     font-size: 20px; 
-    color: #888; 
+    color: #93c5fd; 
     line-height: 1; 
     transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
     z-index: 100; 
@@ -1231,28 +1225,38 @@
 
   .close-btn:hover { 
     color: #fff; 
-    border-color: #666; 
-    background: #111;
+    border-color: #3b82f6; 
+    background: #2563eb;
   }
   
   .form-group { margin-bottom: 16px; }
-  .form-group label { display: flex; align-items: center; margin-bottom: 8px; font-size: 13px; font-weight: 500; color: #888;}
+  .form-group label { display: flex; align-items: center; margin-bottom: 8px; font-size: 13px; font-weight: 500; color: #93c5fd;}
   
   /* Dark Inputs */
   .form-group input, .form-group select { 
     width: 100%; 
     padding: 12px; 
-    background: rgba(255, 255, 255, 0.8); 
-    color: #1d1d1f;
-    border: 1px solid rgba(0, 0, 0, 0.12); 
+    background: rgba(15, 15, 40, 0.8); 
+    color: #ffffff;
+    border: 1px solid rgba(59, 130, 246, 0.2); 
     border-radius: 8px; 
     font-size: 14px; 
     box-sizing: border-box; 
     transition: 0.2s;
   }
   
-  .form-group input::placeholder { color: #86868b; }
-  .form-group input:focus, .form-group select:focus { border-color: #0071e3; outline: none; }
+  .form-group input::placeholder { color: #6b7280; }
+  .form-group input:focus, .form-group select:focus { border-color: #3b82f6; outline: none; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
+
+  /* Date Picker Styling */
+  .form-group input[type="date"] {
+    color-scheme: dark;
+    cursor: pointer;
+  }
+  .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6) sepia(1) saturate(3) hue-rotate(190deg);
+    cursor: pointer;
+  }
 
   /* Flex row for Purchase Price + Dropdown */
   .input-row { display: flex; gap: 10px; }
@@ -1262,12 +1266,12 @@
   /* Flex row for other price fields */
   .price-row { display: flex; align-items: stretch; }
   .currency-addon {
-    background: #1a1a1a;
+    background: #0a0a1e;
     padding: 0 14px;
-    border: 1px solid #222;
+    border: 1px solid rgba(59, 130, 246, 0.2);
     border-right: none;
     border-radius: 8px 0 0 8px;
-    color: #aaa;
+    color: #93c5fd;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -1279,8 +1283,8 @@
   .help-icon {
     display: inline-block;
     margin-left: 8px;
-    background: #222;
-    color: #aaa;
+    background: #1e3a5f;
+    color: #93c5fd;
     border-radius: 50%;
     width: 18px;
     height: 18px;
@@ -1291,13 +1295,13 @@
     font-weight: bold;
     transition: 0.2s;
   }
-  .help-icon:hover { background: #444; color: #fff; }
+  .help-icon:hover { background: #3b82f6; color: #fff; }
   
   /* Submit Button */
   .submit-btn { 
     width: 100%; 
     padding: 14px; 
-    background: #0071e3; 
+    background: #3b82f6; 
     color: #ffffff; 
     border: none; 
     border-radius: 8px; 
@@ -1307,23 +1311,24 @@
     transition: 0.2s;
     margin-top: 24px;
   }
-  .submit-btn:hover { background: #0077ed; }
+  .submit-btn:hover { background: #2563eb; }
 
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
-  ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.2); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.35); }
+  ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
+  ::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.4); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.6); }
   
-  /* Change the overall page background to white */
+  /* Change the overall page background to black */
   html {
-    background-color: #f5f5f7 !important;
+    background-color: #000000 !important;
   }
 
   /* Apply overflow restrictions ONLY to the body to prevent iOS scroll-locking */
   body {
-    background-color: #f5f5f7 !important;
+    background-color: #000000 !important;
     overflow-x: hidden !important; 
     width: 100%; 
+    color: #ffffff;
   }
 
   /* --- REAL-TIME STATS UI --- */
@@ -1343,18 +1348,18 @@
   }
 
   .stat-card {
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(10, 10, 30, 0.65);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     border-radius: 20px;
     padding: 24px;
     text-align: center;
   }
 
   .stat-title {
-    color: #6e6e73;
+    color: #93c5fd;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -1363,7 +1368,7 @@
   }
 
   .stat-value {
-    color: #1d1d1f;
+    color: #ffffff;
     font-size: 36px;
     font-weight: 800;
     letter-spacing: -1px;
@@ -1372,24 +1377,24 @@
   }
 
   .stat-trend {
-    color: #00ff88; /* Cyberpunk green for the live data */
+    color: #3b82f6;
     font-size: 12px;
     font-weight: 600;
   }
 
   .activity-container {
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(10, 10, 30, 0.65);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     border-radius: 20px;
     padding: 24px;
     position: relative;
   }
 
   .activity-header {
-    color: #1d1d1f;
+    color: #ffffff;
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 20px;
@@ -1407,21 +1412,21 @@
 
   .activity-table th {
     text-align: center;
-    color: #6e6e73;
+    color: #93c5fd;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     padding-bottom: 16px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.15);
   }
 
   .activity-table td {
     text-align: center;
-    color: #424245;
+    color: #d1d5db;
     font-size: 13px;
     font-weight: 500;
     padding: 16px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
   }
 
   .activity-table tr:last-child td {
@@ -1429,10 +1434,10 @@
     padding-bottom: 0;
   }
 
-  /* The green status pill */
+  /* The blue status pill */
   .status-pill {
-    background: rgba(0, 255, 136, 0.1);
-    color: #00ff88;
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 11px;
@@ -1449,7 +1454,7 @@
     width: 100%;
     padding: 30px 0;
     text-align: center;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.15);
     margin-bottom: 20px;
   }
 
@@ -1470,21 +1475,21 @@
   #brandSearch {
     width: 100%;
     padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(10, 10, 30, 0.72);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(59, 130, 246, 0.3);
     border-radius: 12px;
-    color: #1d1d1f;
+    color: #ffffff;
     font-size: 16px; 
     outline: none;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     transition: border-color 0.2s ease;
     box-sizing: border-box;
   }
 
-  #brandSearch::placeholder { color: #86868b; font-weight: 500; }
-  #brandSearch:focus { border-color: #0071e3; }
+  #brandSearch::placeholder { color: #6b7280; font-weight: 500; }
+  #brandSearch:focus { border-color: #3b82f6; }
 
   /* --- GRID TITLE (Matches Stats Card Text) --- */
   .grid-title-container {
@@ -1496,7 +1501,7 @@
   }
 
   .grid-title {
-    color: #6e6e73;
+    color: #93c5fd;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -1504,7 +1509,7 @@
   }
 
   .logoreplica-container {
-    max-width: 1380px; /* Matches your product grid width perfectly */
+    max-width: 1380px;
     margin: 0 auto 15px auto;
     padding: 0 20px;
     box-sizing: border-box;
@@ -1512,7 +1517,7 @@
   }
 
   .logoreplica {
-    color: #1d1d1f;
+    color: #ffffff;
     font-size: 24px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -1547,12 +1552,12 @@
     }
 
     .brand-card { 
-      /* THE FIX: Changed to match desktop liquid glass transparency */
-      background: rgba(255, 255, 255, 0.65);
+      /* Dark glass for mobile */
+      background: rgba(10, 10, 30, 0.65);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(59, 130, 246, 0.1);
     }
 
     /* Stats Grid */
@@ -1596,9 +1601,9 @@
   /* --- THE DEN CENTERED FOOTER --- */
   .footer-centered {
       background: transparent;
-      color: #6e6e73;
+      color: #93c5fd;
       padding: 40px 20px;
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      border-top: 1px solid rgba(59, 130, 246, 0.15);
       text-align: center;
       position: relative;
       z-index: 10;
@@ -1620,7 +1625,7 @@
       font-size: 22px; 
       letter-spacing: -1px; 
       text-transform: uppercase;
-      color: #1d1d1f;
+      color: #3b82f6;
       text-decoration: none;
   }
 
@@ -1637,7 +1642,7 @@
 
   .footer-centered__nav a,
   .footer-centered__social a {
-      color: #6e6e73;
+      color: #93c5fd;
       text-decoration: none;
       font-weight: 500;
       font-size: 14px;
@@ -1646,24 +1651,24 @@
   
   .footer-centered__nav a:hover,
   .footer-centered__social a:hover {
-      color: #0071e3;
+      color: #3b82f6;
   }
   
   .footer-centered__social svg {
       width: 20px;
       height: 20px;
-      fill: #6e6e73;
+      fill: #93c5fd;
       transition: fill 0.2s ease-in-out;
   }
 
   .footer-centered__social a:hover svg {
-      fill: #0071e3;
+      fill: #3b82f6;
   }
 
   .footer-centered__copyright {
       font-size: 13px;
       margin: 0;
-      color: #86868b;
+      color: #6b7280;
   }
   
 </style>
@@ -1681,7 +1686,7 @@
             <div class="toast-desc">We're giving away 1-Month of Unlimited Access, join the Discord.</div>
         </div>
     </div>
-    <a href="https://discord.gg/yCzGkRek86" target="_blank" class="toast-btn" onclick="closeDiscordToast()">Join to Enter</a>
+    <a href="https://discord.gg/N6Q4ktRKWf" target="_blank" class="toast-btn" onclick="closeDiscordToast()">Join to Enter</a>
   </div>
 
   <div id="appleLoaderOverlay">
@@ -1697,12 +1702,15 @@
       <div class="logo">The Den</div>
         <div class="nav-actions" style="align-items: center;">
           
-          <a href="https://discord.gg/yCzGkRek86" target="_blank" style="display: flex; align-items: center; color: #ffffff; transition: opacity 0.2s ease; line-height: 0;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+          <a href="https://discord.gg/N6Q4ktRKWf" target="_blank" style="display: flex; align-items: center; color: #ffffff; transition: opacity 0.2s ease; line-height: 0;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 127.14 96.36" fill="currentColor">
                   <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.2,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
               </svg>
           </a>
           
+          <button type="button" onclick="openKeyAuthModal()" style="display: flex; align-items: center; padding: 0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          </button>
           <button type="button" onclick="handleGetAccess()">Get Access</button>
       </div>
   </nav>
@@ -1790,149 +1798,53 @@
   </div>
 
 <div class="dashboard">
-  <div class="brand-card" onclick="openModal('stockx')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667135/Untitled-1_qplzzl.png" alt="StockX">
-  </div>
   <div class="brand-card" onclick="openModal('apple')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667338/Untitled-1_agbho0.png" alt="Apple">
-  </div>
-  <div class="brand-card" onclick="openModal('goat')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667546/Untitle2d-1_b7qs06.png" alt="GOAT">
-  </div>
-  <div class="brand-card" onclick="openModal('zalando')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667546/Untitled2-1_s1wlgq.png" alt="Zalando">
-  </div>
-  <div class="brand-card" onclick="openModal('farfetch')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667547/Untitled-1_yyqh98.png" alt="FARFETCH">
-  </div>
-  <div class="brand-card" onclick="openModal('ebay')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667724/Untitle11d-1_j7n1pq.png" alt="eBay">
   </div>
   <div class="brand-card" onclick="openModal('louisvuitton')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667724/Untitled-1_zg0liz.png" alt="Louis Vuitton">
   </div>
-  <div class="brand-card" onclick="openModal('dyson')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667723/Untitle2d-1_kpalfa.png" alt="Dyson">
+  <div class="brand-card" onclick="openModal('dior')">
+    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668273/U1ntitled-1_rgw1pz.png" alt="DIOR">
   </div>
   <div class="brand-card" onclick="openModal('balenciaga')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667901/Unti2tled-1_bxgizu.png" alt="Balenciaga">
   </div>
-  <div class="brand-card" onclick="openModal('grailed')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667902/Untitled-1_i64s01.png" alt="Grailed">
-  </div>
-  <div class="brand-card" onclick="openModal('moncler')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667902/Untit1led-1_zzuuea.png" alt="Moncler">
-  </div>
-  <div class="brand-card" onclick="openModal('selfridges')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668109/Untitled1-1_eujsua.png" alt="Selfridges">
-  </div>
-  <div class="brand-card" onclick="openModal('amazon')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668107/Untitled-1_bb1wgk.png" alt="Amazon">
-  </div>
-  <div class="brand-card" onclick="openModal('viviennewestwood')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668108/Unt1itled-1_umty6t.png" alt="Vivienne Westwood">
-  </div>
-  <div class="brand-card" onclick="openModal('flannels')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668274/Untitl111ed-1_d3vtmv.png" alt="Flannels">
-  </div>
-  <div class="brand-card" onclick="openModal('dior')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668273/U1ntitled-1_rgw1pz.png" alt="DIOR">
-  </div>
   <div class="brand-card" onclick="openModal('nike')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668274/Untitled-1_gbxfhd.png" alt="Nike">
-  </div>
-  <div class="brand-card" onclick="openModal('kickgame')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668498/U1ntitled-1_htpyt7.png" alt="Kick Game">
-  </div>
-  <div class="brand-card" onclick="openModal('hermes')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668500/Untitled-1_pop751.png" alt="Hermes">
-  </div>
-  <div class="brand-card" onclick="openModal('vinted')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668499/Unti1tled-1_nvvmfg.png" alt="Vinted">
-  </div>
-  <div class="brand-card" onclick="openModal('rickowens')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777737376/Untitled-1_pra2vy.png" alt="Rick Owens">
-  </div>
-  <div class="brand-card" onclick="openModal('saintlaurent')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777738223/Untitled-1_ip5yse.png" alt="Saint Laurent">
-  </div>
-  <div class="brand-card" onclick="openModal('pandora')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777739104/Untitled-1_prxdhl.png" alt="Pandora">
   </div>
   <div class="brand-card" onclick="openModal('sp5der')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777762457/Untitled-1_am1bhy.png" alt="SP5DER">
   </div>
-  <div class="brand-card" onclick="openModal('tnf')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777763129/Untitled-1_nbic0q.png" alt="The North Face">
+  <div class="brand-card" onclick="openModal('chromehearts')">
+    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1778397887/email_thumbnail_jsjvxk.png" alt="Chrome Hearts">
   </div>
   <div class="brand-card" onclick="openModal('gucci')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777763842/Untitled-1_n1ugdm.png" alt="Gucci">
   </div>
-  <div class="brand-card" onclick="openModal('mrporter')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777764643/Untitled-1_rnpcaf.png" alt="MR PORTER">
-  </div>
-  <div class="brand-card" onclick="openModal('harrods')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777765646/Untitled-1_p9pmqu.png" alt="Harrods">
-  </div>
-  <div class="brand-card" onclick="openModal('bestbuy')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777766784/Untitled-1_natrb9.png" alt="Best Buy">
-  </div>
   <div class="brand-card" onclick="openModal('prada')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777768303/Untitled-1_ooyfmm.png" alt="Prada">
   </div>
-  <div class="brand-card" onclick="openModal('canadagoose')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777770485/Untitled-1_x4k7wv.png" alt="Canada Goose">
+  <div class="brand-card" onclick="openModal('hermes')">
+    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777668500/Untitled-1_pop751.png" alt="Hermes">
+  </div>
+  <div class="brand-card" onclick="openModal('saintlaurent')">
+    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777738223/Untitled-1_ip5yse.png" alt="Saint Laurent">
+  </div>
+  <div class="brand-card" onclick="openModal('rickowens')">
+    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777737376/Untitled-1_pra2vy.png" alt="Rick Owens">
+  </div>
+  <div class="brand-card" onclick="openModal('moncler')">
+    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777667902/Untit1led-1_zzuuea.png" alt="Moncler">
   </div>
   <div class="brand-card" onclick="openModal('burberry')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777771408/Untitled-1_i3ybom.png" alt="Burberry">
   </div>
-  <div class="brand-card" onclick="openModal('yzygap')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777776221/Untitled-1_gpfuog.png" alt="YZY GAP">
-  </div>
-  <div class="brand-card" onclick="openModal('stussy')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777777010/Untitled-1_jemma0.png" alt="Stussy">
-  </div>
-  <div class="brand-card" onclick="openModal('ssense')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777778181/Untitled-1_haaiob.png" alt="SSENSE">
-  </div>
-  <div class="brand-card" onclick="openModal('brokenplanet')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777779372/Untitled-1_lhflb0.png" alt="Broken Planet">
+  <div class="brand-card" onclick="openModal('canadagoose')">
+    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777770485/Untitled-1_x4k7wv.png" alt="Canada Goose">
   </div>
   <div class="brand-card" onclick="openModal('arcteryx')">
     <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777817783/Untitled-1_ntmix5.png" alt="Arc'Teryx">
-  </div>
-  <div class="brand-card" onclick="openModal('bape')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777818600/Untitled-1_ac4dhk.png" alt="BAPE">
-  </div>
-  <div class="brand-card" onclick="openModal('flightclub')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777819259/Untitled-1_qhuntv.png" alt="Flight Club">
-  </div>
-  <div class="brand-card" onclick="openModal('trapstar')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777820096/Untitled-1_afrdli.png" alt="Trapstar">
-  </div>
-  <div class="brand-card" onclick="openModal('bstn')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777821098/Untitled-1_tnrmmz.png" alt="BSTN">
-  </div>
-  <div class="brand-card" onclick="openModal('notino')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777822013/Untitled-1_yqn8r1.png" alt="Notino">
-  </div>
-  <div class="brand-card" onclick="openModal('bayern')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777823604/Untitled-1_zf0t8v.png" alt="FC Bayern">
-  </div>
-  <div class="brand-card" onclick="openModal('plug')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777824787/Untitled-1_lbhcqz.png" alt="No Sauce The Plug">
-  </div>
-  <div class="brand-card" onclick="openModal('corteiz')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777825755/Untitled-1_nxuq3y.png" alt="Corteiz">
-  </div>
-  <div class="brand-card" onclick="openModal('stanley')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1777826558/Untitled-1_kzfuvc.png" alt="Stanley">
-  </div>
-  <div class="brand-card" onclick="openModal('legitapp')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1779023477/email_thumbnail_n3iqha.png" alt="Legit App">
-  </div>
-  <div class="brand-card" onclick="openModal('footshop')">
-    <img src="https://res.cloudinary.com/dtwidxp58/image/upload/q_auto/f_auto/v1779026412/email_thumbnail_sj7th3.png" alt="Footshop">
   </div>
 </div>
 
@@ -1952,7 +1864,7 @@
             <nav class="footer-centered__social">
                 <ul>
                     <li>
-                        <a href="https://t.me/toni0798" target="_blank" aria-label="Telegram">
+                        <a href="https://t.me/Thehiddenden" target="_blank" aria-label="Telegram">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/>
                                 <path d="m21.854 2.147-10.94 10.939"/>
@@ -1961,13 +1873,13 @@
                     </li>
                     
                     <li>
-                        <a href="https://www.instagram.com/xreceipt.store" target="_blank" aria-label="Instagram">
+                        <a href="https://www.instagram.com/thehiddendenreselling" target="_blank" aria-label="Instagram">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.784.297-1.459.717-2.126 1.384S.926 3.356.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.297.784.717 1.459 1.384 2.126.667.666 1.342 1.089 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.784-.297 1.459-.718 2.126-1.384.666-.667 1.089-1.342 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.148-.558-2.913-.297-.784-.718-1.459-1.384-2.126C21.314 1.64 20.64 1.217 19.856.92c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.056 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.585-.015-4.85-.074c-1.17-.056-1.805-.249-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.164-.422-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.015-3.585.074-4.85c.056-1.17.249-1.805.413-2.227.217.562.477.96.896-1.382.42-.419.819.679 1.381-.896.422-.164 1.057.36 2.227-.413 1.266-.057 1.646-.07 4.85-.07zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
                         </a>
                     </li>
 
                     <li>
-                        <a href="https://discord.gg/yCzGkRek86" target="_blank" style="color: #888; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">
+                        <a href="https://discord.gg/N6Q4ktRKWf" target="_blank" style="color: #888; transition: 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 127.14 96.36" fill="currentColor">
                                 <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.31,60,73.31,53s5-12.74,11.43-12.74S96.2,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
                             </svg>
@@ -1990,12 +1902,12 @@
         <span class="close-btn" onclick="closeLiveCanvas()">×</span>
         <h2 style="margin-top: 0; font-size: 22px; font-weight: 700; margin-bottom: 24px;">Live Receipt Editor</h2>
         
-        <p id="canvasAuthNotice" style="color: #aaa; font-size: 13px; margin-bottom: 15px; display: none;">
-            ⚠️ The watermark is visible because you don't have a license key active.
-            <span onclick="openUpsell()" style="color: #00ff88; cursor: pointer; font-weight: bold; margin-left: 5px;">Remove Watermark &gt;</span>
+        <p id="canvasAuthNotice" style="color: #9ca3af; font-size: 13px; margin-bottom: 15px; display: none;">
+            The watermark is visible because you don't have a license key active.
+            <span onclick="openUpsell()" style="color: #3b82f6; cursor: pointer; font-weight: bold; margin-left: 5px;">Remove Watermark &gt;</span>
         </p>
         
-        <p style="color: #888; font-size: 14px; margin-top: -10px; margin-bottom: 15px;">
+        <p style="color: #9ca3af; font-size: 14px; margin-top: -10px; margin-bottom: 15px;">
             Tap any text on the receipt below to edit it.
         </p>
 
@@ -2140,11 +2052,11 @@
                     <span id="prada-pos-item-date2" class="live-text" contenteditable="true">03/15/2026 15:26 PM</span>
                     <span id="prada-pos-item-reference" class="live-text" contenteditable="true">7104917502384619</span>
             </div> </div> </div> </div> <div class="button-container" style="display: flex; gap: 10px; width: 100%; margin-top: 15px;">
-            <button id="removeWatermarkBtn" class="submit-btn" style="margin-top: 0; background: #00ff88; color: #000; display: none; flex: 1;" onclick="openUpsell()">Remove Watermark</button>
+            <button id="removeWatermarkBtn" class="submit-btn" style="margin-top: 0; background: #3b82f6; color: #fff; display: none; flex: 1;" onclick="openUpsell()">Remove Watermark</button>
             <button id="primaryGenBtn" class="submit-btn" style="margin-top: 0; flex: 1;" onclick="processThermalExport()">Generate Receipt</button>
         </div>
 
-        <p id="printInstructions" style="color: #888; font-size: 13px; text-align: center; margin-top: 16px; margin-bottom: 0; line-height: 1.5; display: none;"></p>
+        <p id="printInstructions" style="color: #9ca3af; font-size: 13px; text-align: center; margin-top: 16px; margin-bottom: 0; line-height: 1.5; display: none;"></p>
       
     </div>
 </div>
@@ -2171,15 +2083,15 @@
     <div style="text-align: left; margin-bottom: 20px;">
       <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
         <input type="checkbox" id="singleReceiptConfirmCheck" onchange="toggleSingleReceiptBtn()" style="width: 18px; height: 18px; margin-top: 2px;">
-        <span style="color: #aaa; font-size: 13px; line-height: 1.4;">By making this purchase, you agree to the terms of the store. Ensure your delivery email is correct above.</span>
+        <span style="color: #9ca3af; font-size: 13px; line-height: 1.4;">By making this purchase, you agree to the terms of the store. Ensure your delivery email is correct above.</span>
       </label>
     </div>
 
     <div style="display: flex; gap: 10px;">
       
-      <button type="button" class="submit-btn" style="margin-top:0; background: #333; color: #fff; flex: 1;" onclick="closeSingleReceiptReview()">Cancel</button>
+      <button type="button" class="submit-btn" style="margin-top:0; background: #1e3a5f; color: #fff; flex: 1;" onclick="closeSingleReceiptReview()">Cancel</button>
       
-      <button type="button" class="submit-btn" id="singleReceiptPayBtn" style="margin-top:0; background: #00ff88; color: #000; flex: 2; opacity: 0.5;" disabled>
+      <button type="button" class="submit-btn" id="singleReceiptPayBtn" style="margin-top:0; background: #3b82f6; color: #fff; flex: 2; opacity: 0.5;" disabled>
         Continue to Payment
       </button>
     </div>
@@ -2190,7 +2102,7 @@
 <div class="modal-overlay" id="helpModalOverlay" style="z-index: 2000;">
   <div class="modal-box" id="helpModalBox">
     <h3 style="margin-top:0;">Adding an Image:</h3>
-    <p style="color: #aaa; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">
+    <p style="color: #9ca3af; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">
       <strong>Recommended:</strong> Save the product image to your device and use the <strong>Upload</strong> button. This guarantees the image will load.<br><br>
       <strong>Alternative:</strong> Paste a direct image link. It must end in an extension like <strong>.jpg</strong> or <strong>.png</strong>. Do not paste the full website address.
     </p>
@@ -2201,7 +2113,7 @@
 <div class="modal-overlay" id="skuHelpModalOverlay" style="z-index: 2000;">
   <div class="modal-box" id="helpModalBox">
     <h3 style="margin-top:0;">How to find the Style ID (SKU):</h3>
-    <p style="color: #aaa; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">     
+    <p style="color: #9ca3af; font-size: 14px; line-height: 1.6; margin-bottom: 24px;">     
       The Style ID or SKU is usually a mix of letters and numbers found on the product box, the inside tag of a shoe, or the official product page (e.g., <strong>DD1391-100</strong>).<br><br>
       If you can't find it, use random numbers.
     </p>
@@ -2215,16 +2127,16 @@
       width: 48px; 
       height: 48px; 
       margin: 0 auto 16px auto; 
-      background-color: #00ff88; /* Your theme's green */
+      background-color: #3b82f6;
       -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZWNrLWljb24gbHVjaWRlLWNoZWNrIj48cGF0aCBkPSJNMjAgNiA5IDE3bC01LTUiLz48L3N2Zz4=') no-repeat center / contain;
       mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZWNrLWljb24gbHVjaWRlLWNoZWNrIj48cGF0aCBkPSJNMjAgNiA5IDE3bC01LTUiLz48L3N2Zz4=') no-repeat center / contain;
     "></div>
     <h2 style="margin-top: 0; font-size: 22px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px;">Receipt Sent!</h2>
-    <p style="color: #aaa; font-size: 15px; line-height: 1.5; margin-bottom: 24px;">
+    <p style="color: #9ca3af; font-size: 15px; line-height: 1.5; margin-bottom: 24px;">
       Your receipt has been successfully generated and sent to <br>
       <strong style="color: #fff;" id="successEmailPlaceholder">email</strong>.
     </p>
-    <p style="color: #777; font-size: 13px; margin-bottom: 24px;">
+    <p style="color: #6b7280; font-size: 13px; margin-bottom: 24px;">
       If it doesn't appear in your inbox shortly, please check your spam or junk folder.
     </p>
     <button type="button" class="submit-btn" style="margin-top:0;" onclick="closeSuccessModal()">Got it</button>
@@ -2238,13 +2150,13 @@
       width: 48px; 
       height: 48px; 
       margin: 0 auto 16px auto; 
-      background-color: #ffcc00; /* Warning Yellow */
+      background-color: #f59e0b;
       -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Im0yMS43MyAxOC04LTE0YTIgMiAwIDAgMC0zLjQ4IDBsLTggMTRBMiAyIDAgMCAwIDQgMjFoMTZhMiAyIDAgMCAwIDEuNzMtM1oiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==') no-repeat center / contain;
       mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Im0yMS43MyAxOC04LTE0YTIgMiAwIDAgMC0zLjQ4IDBsLTggMTRBMiAyIDAgMCAwIDQgMjFoMTZhMiAyIDAgMCAwIDEuNzMtM1oiLz48cGF0aCBkPSJNMTIgOXY0Ii8+PHBhdGggZD0iTTEyIDE3aC4wMSIvPjwvc3ZnPg==') no-repeat center / contain;
     "></div>
 
     <h2 id="dynamicAlertTitle" style="margin-top: 0; font-size: 22px; font-weight: 700; margin-bottom: 12px;">Alert</h2>
-    <p id="dynamicAlertMessage" style="color: #aaa; font-size: 15px; line-height: 1.5; margin-bottom: 24px;">
+    <p id="dynamicAlertMessage" style="color: #9ca3af; font-size: 15px; line-height: 1.5; margin-bottom: 24px;">
       Message goes here.
     </p>
     <div id="dynamicAlertButtons" style="display: flex; gap: 10px; justify-content: center;">
@@ -2256,27 +2168,27 @@
   <div class="modal-box" style="text-align: center; width: 380px;">
     
     <h2 style="margin-top: 0; font-size: 22px; font-weight: 700; margin-bottom: 10px;">Contact Support</h2>
-    <p style="color: #aaa; font-size: 14px; margin-bottom: 24px;">Choose your preferred method to reach our team.</p>
+    <p style="color: #9ca3af; font-size: 14px; margin-bottom: 24px;">Choose your preferred method to reach our team.</p>
 
     <div style="display: flex; flex-direction: column; gap: 12px;">
-        <a href="mailto:help@xreceipt.store" class="submit-btn" style="background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.1);">
+        <a href="mailto:help@xreceipt.store" class="submit-btn" style="background: rgba(59, 130, 246, 0.1); color: #fff; text-decoration: none; border: 1px solid rgba(59, 130, 246, 0.2);">
             Email Support
         </a>
         
-        <a href="https://t.me/toni0798" target="_blank" class="submit-btn" style="background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.1);">
+        <a href="https://t.me/Thehiddenden" target="_blank" class="submit-btn" style="background: rgba(59, 130, 246, 0.1); color: #fff; text-decoration: none; border: 1px solid rgba(59, 130, 246, 0.2);">
             Telegram
         </a>
         
-        <a href="https://www.instagram.com/xreceipt.store" target="_blank" class="submit-btn" style="background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.1);">
+        <a href="https://www.instagram.com/thehiddendenreselling" target="_blank" class="submit-btn" style="background: rgba(59, 130, 246, 0.1); color: #fff; text-decoration: none; border: 1px solid rgba(59, 130, 246, 0.2);">
             Instagram
         </a>
 
-        <a href="https://discord.gg/yCzGkRek86" target="_blank" class="submit-btn" style="background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.1);">
+        <a href="https://discord.gg/N6Q4ktRKWf" target="_blank" class="submit-btn" style="background: rgba(59, 130, 246, 0.1); color: #fff; text-decoration: none; border: 1px solid rgba(59, 130, 246, 0.2);">
             Discord
         </a>
     </div>
 
-    <button type="button" style="margin-top: 20px; background: transparent; border: none; color: #888; cursor: pointer; font-size: 14px; text-decoration: underline;" onclick="closeSupportModal()">Cancel</button>
+    <button type="button" style="margin-top: 20px; background: transparent; border: none; color: #9ca3af; cursor: pointer; font-size: 14px; text-decoration: underline;" onclick="closeSupportModal()">Cancel</button>
   </div>
 </div>
 
@@ -2727,7 +2639,7 @@
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
       { id: 'salesTax', label: 'Sales Tax', type: 'number', isPrice: true },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 47196039-40159634' },
-      { id: 'deliveryDate', label: 'Date of Delivery', type: 'text', placeholder: 'e.g. March 15, 2026' },
+      { id: 'deliveryDate', label: 'Date of Delivery', type: 'date' },
       { id: 'customerEmail', label: 'Delivery Email Address', type: 'email' }
     ],
     apple: [
@@ -2735,7 +2647,7 @@
       { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. W7150743374' },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'DD/MM/YYYY' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
       { id: 'city', label: 'City', type: 'text', placeholder: 'e.g. Thale' },
@@ -2771,8 +2683,8 @@
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. Mon, 11 May 2026' },
-      { id: 'deliveryDate', label: 'Delivery Date', type: 'text', placeholder: 'e.g. Wed, 13 May 2026 - Thu, 14 May 2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
+      { id: 'deliveryDate', label: 'Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 7106938306' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2788,8 +2700,8 @@
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
       { id: 'tax', label: 'Tax', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Estimated Delivery (1)', type: 'text', placeholder: 'e.g. 24/03/2026' },
-      { id: 'deliveryDate', label: 'Estimated Delivery (2)', type: 'text', placeholder: 'e.g. 26/03/2026' },
+      { id: 'orderDate', label: 'Estimated Delivery (1)', type: 'date' },
+      { id: 'deliveryDate', label: 'Estimated Delivery (2)', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 5019582' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2804,7 +2716,7 @@
       { id: 'sku', label: 'Item ID (SKU)', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
-      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'text', placeholder: 'e.g. Tue, 21 Apr - Mon, 27 Apr' },
+      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 05-40186-25492' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2819,7 +2731,7 @@
       { id: 'sku', label: 'Item ID (SKU)', type: 'text' },
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
-      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'text', placeholder: 'e.g. 20/03 and 21/03' },
+      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. nx719506247' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2877,8 +2789,8 @@
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 25 April 2026' },
-      { id: 'deliveryDate', label: 'Estimated Delivery Dates', type: 'text', placeholder: 'e.g. 29 April 2026 and 30 April 2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
+      { id: 'deliveryDate', label: 'Estimated Delivery Dates', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 10007413549' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2896,7 +2808,7 @@
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 11-04-2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 630521634' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2909,7 +2821,7 @@
       { id: 'productName', label: 'Product Name', type: 'text' },
       { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
-      { id: 'deliveryDate', label: 'Delivery Date', type: 'text', placeholder: 'e.g. Monday, 13 April' },
+      { id: 'deliveryDate', label: 'Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 811-5719680-9550' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2925,7 +2837,7 @@
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 15/04/2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. VW-VW0001353429' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2938,8 +2850,8 @@
       { id: 'productName', label: 'Product Name', type: 'text' },
       { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
       { id: 'sku', label: 'Product ID (SKU)', type: 'text' },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 10 March 2026' },
-      { id: 'deliveryDate', label: 'Delivery Date', type: 'text', placeholder: 'e.g. 13 March 2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
+      { id: 'deliveryDate', label: 'Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. FLAN800000031763890' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2984,8 +2896,8 @@
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'tax', label: 'Tax', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. Mar 24, 2026' },
-      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'text', placeholder: 'e.g. Mar 29, 2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
+      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. C105311759 ' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -2999,7 +2911,7 @@
       { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 15/04/2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 61591750' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3015,7 +2927,7 @@
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 15/04/2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 61591750' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3035,7 +2947,7 @@
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 15/04/2026 12:43:07' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. R21566839' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3069,7 +2981,7 @@
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 15-04-2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. PND71590418' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3093,6 +3005,15 @@
       { id: 'country', label: 'Country', type: 'text', placeholder: 'e.g. Germany' },
       { id: 'customerEmail', label: 'Delivery Email Address', type: 'email' }
     ],
+    chromehearts: [
+      { id: 'productName', label: 'Product Name', type: 'text' },
+      { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
+      { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
+      { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. CH9184720' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
+      { id: 'fullName', label: 'Name & Surname', type: 'text' },
+      { id: 'customerEmail', label: 'Delivery Email Address', type: 'email' }
+    ],
     tnf: [
       { id: 'productName', label: 'Product Name', type: 'text' },
       { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
@@ -3100,7 +3021,7 @@
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'tax', label: 'Tax', type: 'number', isPrice: true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 15/04/2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 51960259' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3117,7 +3038,7 @@
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'tax', label: 'VAT', type: 'number', isPrice: true },
-      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'text', placeholder: 'e.g. 10 Nov' },
+      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. EU819503715' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3132,7 +3053,7 @@
       { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
-      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'text', placeholder: 'e.g. 29/04/2026' },
+      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 1500819503' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3147,7 +3068,7 @@
       { id: 'sku', label: 'Product ID (SKU)', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'tax', label: 'Tax', type: 'number', isPrice:true },
-      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'text', placeholder: 'e.g. Tuesday, March 10' },
+      { id: 'deliveryDate', label: 'Estimated Delivery Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. BB12-58494955839' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'storeName', label: 'Store Name', type: 'text', placeholder: 'e.g. Best Buy Vaudreuil-Dorion' },
@@ -3195,7 +3116,7 @@
       { id: 'color', label: 'Color', type: 'text' },
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
-      { id: 'deliveryDate', label: 'Date of Delivery', type: 'text', placeholder: 'e.g. Monday, 16 March 2026' },
+      { id: 'deliveryDate', label: 'Date of Delivery', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 71940582' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3238,7 +3159,7 @@
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'tax', label: 'Tax', type: 'number', isPrice:true },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice:true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. April 13, 2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 9284971061133' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3268,7 +3189,7 @@
       { id: 'productImage', label: 'Product Image (URL)', type: 'text' },
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'color', label: 'Color', type: 'text' },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. January 10, 2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 683720' },
       { id: 'trackingNumber', label: 'Tracking Number', type: 'text', placeholder: 'e.g. 1Z76419764137012' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
@@ -3333,7 +3254,7 @@
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'tax', label: 'Tax', type: 'number', isPrice:true },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice:true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 23.04.2026, 16:29' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 120058185940' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3361,7 +3282,7 @@
       { id: 'size', label: 'Size', type: 'text' },
       { id: 'purchasePrice', label: 'Purchase Price', type: 'number' },
       { id: 'shippingFee', label: 'Shipping Fee', type: 'number', isPrice:true },
-      { id: 'orderDate', label: 'Order Date', type: 'text', placeholder: 'e.g. 15.05.2026' },
+      { id: 'orderDate', label: 'Order Date', type: 'date' },
       { id: 'orderNumber', label: 'Order Number', type: 'text', placeholder: 'e.g. 5819404510' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'streetAddress', label: 'Street Address', type: 'text', placeholder: 'e.g. Willi-Bredel-Ring 40' },
@@ -3417,8 +3338,8 @@
     ],
     legitapp: [
       { id: 'productName', label: 'Product Name', type: 'text' },
-      { id: 'orderDate', label: 'Submit Date & Hour', type: 'text', placeholder: 'e.g. 2026-05-01 10:20 AM UTC' },
-      { id: 'deliveryDate', label: 'Completion Date & Hour', type: 'text', placeholder: 'e.g. 2026-05-01 11:14 AM UTC' },
+      { id: 'orderDate', label: 'Submit Date & Hour', type: 'date' },
+      { id: 'deliveryDate', label: 'Completion Date & Hour', type: 'date' },
       { id: 'orderNumber', label: 'Authentication Number', type: 'text', placeholder: 'e.g. 1826742500435949' },
       { id: 'fullName', label: 'Name & Surname', type: 'text' },
       { id: 'customerEmail', label: 'Delivery Email Address', type: 'email' }
@@ -3504,6 +3425,88 @@
   // --- NAVBAR "GET ACCESS" LOGIC ---
   function handleGetAccess() {
       openUpsell();
+  }
+
+  // --- KEYAUTH LICENSE SYSTEM ---
+  const KEYAUTH_CONFIG = {
+      app: 'Hidden Den',
+      ownerid: 'M33HEmrRTf',
+      secret: 'f6661db0961f66bfff55d9543efc4480c5b1c712d41afd77f9fb2d1dcbe07f0e',
+      version: '1.0',
+      apiUrl: 'https://keyauth.win/api/1.0/'
+  };
+
+  function openKeyAuthModal() {
+      const modal = document.getElementById('keyAuthModalOverlay');
+      modal.style.display = 'flex';
+      modal.style.opacity = '0';
+      setTimeout(() => {
+          modal.style.opacity = '1';
+          modal.style.transition = 'opacity 0.25s ease';
+      }, 10);
+      const savedKey = localStorage.getItem('xreceipt_license');
+      if (savedKey) {
+          document.getElementById('keyAuthInput').value = savedKey;
+      }
+  }
+
+  function closeKeyAuthModal() {
+      const modal = document.getElementById('keyAuthModalOverlay');
+      modal.style.opacity = '0';
+      setTimeout(() => { modal.style.display = 'none'; }, 250);
+  }
+
+  async function verifyKeyAuthKey() {
+      const key = document.getElementById('keyAuthInput').value.trim();
+      const statusEl = document.getElementById('keyAuthStatus');
+      
+      if (!key) {
+          statusEl.style.display = 'block';
+          statusEl.style.color = '#ef4444';
+          statusEl.textContent = 'Please enter a license key.';
+          return;
+      }
+
+      statusEl.style.display = 'block';
+      statusEl.style.color = '#9ca3af';
+      statusEl.textContent = 'Verifying...';
+
+      try {
+          const response = await fetch('http://localhost:3000/verify-key', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ key: key })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+              localStorage.setItem('xreceipt_license', key);
+              statusEl.style.color = '#3b82f6';
+              statusEl.textContent = 'License activated successfully!';
+              
+              setTimeout(() => {
+                  closeKeyAuthModal();
+                  updateKeyStatus();
+              }, 1500);
+          } else {
+              statusEl.style.color = '#ef4444';
+              statusEl.textContent = data.message || 'Invalid license key.';
+          }
+      } catch (err) {
+          statusEl.style.color = '#ef4444';
+          statusEl.textContent = 'Connection error. Make sure the server is running.';
+          console.error('KeyAuth error:', err);
+      }
+  }
+
+  function updateKeyStatus() {
+      const savedKey = localStorage.getItem('xreceipt_license');
+      const keyBtn = document.querySelector('.nav-actions button:first-child');
+      if (savedKey && keyBtn) {
+          keyBtn.textContent = 'Active';
+          keyBtn.style.color = '#3b82f6';
+      }
   }
 
   function closeReceiptHistoryModal() {
@@ -3795,7 +3798,7 @@
         html += `<div class="input-row">`; 
         html += `<input type="text" id="${field.id}" placeholder="Paste URL or click Upload ->" required>`;
         html += `<input type="file" id="imageUploader" accept="image/png, image/jpeg, image/webp" style="display: none;" onchange="processLocalImage(event)">`;
-        html += `<button type="button" onclick="document.getElementById('imageUploader').click()" style="background: #1a1a1a; color: #fff; border: 1px solid #333; border-radius: 8px; padding: 0 16px; font-weight: bold; cursor: pointer; transition: 0.2s; white-space: nowrap;">Upload</button>`;
+        html += `<button type="button" onclick="document.getElementById('imageUploader').click()" style="background: #1e3a5f; color: #fff; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 0 16px; font-weight: bold; cursor: pointer; transition: 0.2s; white-space: nowrap;">Upload</button>`;
         html += `</div>`;
       } 
       else if (field.id === 'sku') {
@@ -4270,6 +4273,7 @@ function animateGlow() {
   // --- NEW USER WELCOME LOGIC & DISCORD TOAST ---
   window.addEventListener('DOMContentLoaded', () => {
       setTimeout(showDiscordToast, 3000);
+      updateKeyStatus();
   });
 
   // --- DISCORD TOAST ENGINE ---
@@ -4704,90 +4708,90 @@ function animateGlow() {
   #upsellModalContent { scrollbar-width: none; }
 </style>
 
-<div id="customUpsellModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 99999; backdrop-filter: blur(8px); align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
-    <div style="background: #111; border: 1px solid #333; border-radius: 20px; width: 90%; max-width: 440px; max-height: 93vh; overflow-y: auto; padding: 35px 30px; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 25px rgba(0,255,136,0.05); transform: translateY(20px); transition: transform 0.3s ease;" id="upsellModalContent">
+<div id="customUpsellModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 99999; backdrop-filter: blur(8px); align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+    <div style="background: rgba(10, 10, 30, 0.95); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 20px; width: 90%; max-width: 440px; max-height: 93vh; overflow-y: auto; padding: 35px 30px; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 25px rgba(59, 130, 246, 0.1); transform: translateY(20px); transition: transform 0.3s ease;" id="upsellModalContent">
         
-        <button onclick="closeUpsell()" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #666; font-size: 28px; cursor: pointer; transition: color 0.2s;">&times;</button>
+        <button onclick="closeUpsell()" style="position: absolute; top: 15px; right: 20px; background: none; border: none; color: #6b7280; font-size: 28px; cursor: pointer; transition: color 0.2s;">&times;</button>
         
         <div style="text-align: center; margin-bottom: 20px;">
-            <div style="width: 54px; height: 54px; background: rgba(0,255,136,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; border: 1px solid rgba(0,255,136,0.2);">
-                <svg width="26" height="26" fill="none" stroke="#00ff88" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <div style="width: 54px; height: 54px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; border: 1px solid rgba(59, 130, 246, 0.2);">
+                <svg width="26" height="26" fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
             <h2 style="color: #fff; font-size: 24px; margin: 0 0 8px 0; font-weight: 800; letter-spacing: -0.5px;">Premium Membership (Lifetime)</h2>
-            <p style="color: #aaa; margin: 0; font-size: 14px; line-height: 1.4;">Unlimited access to the ultimate receipt generator.</p>
+            <p style="color: #9ca3af; margin: 0; font-size: 14px; line-height: 1.4;">Unlimited access to the ultimate receipt generator.</p>
         </div>
 
-        <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: center; gap: 12px;">
-            <span class="price-crossed" style="font-size: 22px; color: #666; font-weight: 600; text-decoration: line-through;">€25.99</span>
+        <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid rgba(59, 130, 246, 0.15); display: flex; align-items: center; justify-content: center; gap: 12px;">
+            <span class="price-crossed" style="font-size: 22px; color: #6b7280; font-weight: 600; text-decoration: line-through;">$25.99</span>
             <div style="display: flex; align-items: baseline;">
-                <span class="price-large" style="font-size: 42px; color: #fff; font-weight: 800; letter-spacing: -1px; line-height: 1;">€19.99</span>
+                <span class="price-large" style="font-size: 42px; color: #fff; font-weight: 800; letter-spacing: -1px; line-height: 1;">$15.00</span>
             </div>
-            <span style="background: rgba(0,255,136,0.1); color: #00ff88; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">20% Off</span>
+            <span style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">42% Off</span>
         </div>
 
         <ul style="list-style: none; padding: 0; margin: 0 0 30px 0;">
-            <li style="color: #eee; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
-                <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li style="color: #d1d5db; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
+                <svg width="18" height="18" fill="none" stroke="#3b82f6" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span><strong>Unlimited generation</strong> with no caps or hidden fees</span>
             </li>
-            <li style="color: #eee; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
-                <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li style="color: #d1d5db; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
+                <svg width="18" height="18" fill="none" stroke="#3b82f6" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span><strong>No watermark</strong> in paper & email receipts</span>
             </li>
-            <li style="color: #eee; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
-                <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li style="color: #d1d5db; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
+                <svg width="18" height="18" fill="none" stroke="#3b82f6" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span>Access to the complete <strong>240+ Vendor List</strong></span>
             </li>
-            <li style="color: #eee; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
-                <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li style="color: #d1d5db; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
+                <svg width="18" height="18" fill="none" stroke="#3b82f6" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span><strong>50+ store templates</strong> with fully customizable details</span>
             </li>
-            <li style="color: #eee; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
-                <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li style="color: #d1d5db; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
+                <svg width="18" height="18" fill="none" stroke="#3b82f6" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span><strong>Free access</strong> to all future tools & templates</span>
             </li>
-            <li style="color: #eee; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
-                <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li style="color: #d1d5db; margin-bottom: 14px; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
+                <svg width="18" height="18" fill="none" stroke="#3b82f6" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span>Priority 24/7 support & <strong>Premium Discord Role</strong></span>
             </li>
-            <li style="color: #eee; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
-                <svg width="18" height="18" fill="none" stroke="#00ff88" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <li style="color: #d1d5db; display: flex; align-items: flex-start; font-size: 15px; font-weight: 500;">
+                <svg width="18" height="18" fill="none" stroke="#3b82f6" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 12px; margin-top: 2px; flex-shrink: 0;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                 <span><strong>Pay once, use forever.</strong> Your lifetime license key will never expire.</span>
             </li>
         </ul>
 
-        <button onclick="openSellAuthCheckout('premium', this)" class="submit-btn" style="width: 100%; margin: 0; background: #00ff88; color: #000; font-size: 16px; padding: 16px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer;">
+        <button onclick="openSellAuthCheckout('premium', this)" class="submit-btn" style="width: 100%; margin: 0; background: #3b82f6; color: #fff; font-size: 16px; padding: 16px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer;">
           Unlock Full Access
         </button>
         
         <div style="display: flex; align-items: center; justify-content: center; margin: 16px 0 12px 0; gap: 12px;">
-            <div style="height: 1px; background: #333; flex: 1;"></div>
-            <span style="color: #666; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">OR</span>
-            <div style="height: 1px; background: #333; flex: 1;"></div>
+            <div style="height: 1px; background: rgba(59, 130, 246, 0.15); flex: 1;"></div>
+            <span style="color: #6b7280; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">OR</span>
+            <div style="height: 1px; background: rgba(59, 130, 246, 0.15); flex: 1;"></div>
         </div>
         
-        <button onclick="scrollToReceiptsFromUpsell()" style="display: block; margin: 0 auto; background: transparent; color: #aaa; border: 1px solid #333; padding: 10px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">
-          Generate just a single receipt — €5.99
+        <button onclick="openSellAuthCheckout('singleReceipt', this)" style="display: block; margin: 0 auto; background: transparent; color: #9ca3af; border: 1px solid rgba(59, 130, 246, 0.2); padding: 10px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">
+          Generate just a single receipt — $1.85
         </button>
 
-        <p style="text-align: center; color: #666; font-size: 12px; margin: 18px 0 0 0; line-height: 1.5;">
+        <p style="text-align: center; color: #6b7280; font-size: 12px; margin: 18px 0 0 0; line-height: 1.5;">
             Lifetime access. Pay once and use the generator forever.
         </p>
     </div>
 </div>
 
   <script>
-  const SELLAUTH_SHOP_ID = 239421;
+  const SELLAUTH_SHOP_ID = 239314;
 
   const SELLAUTH_PRODUCTS = {
     premium: {
-      productId: 726793,      // Lifetime Access
-      variantId: 1179000,        // add the Lifetime variantId here
+      productId: 729262,      // Lifetime Access
+      variantId: 1187327,     // Lifetime variant
       quantity: 1
     },
     singleReceipt: {
-      productId: 726799,      // Single Receipt
-      variantId: 1179010,        // add the Single Receipt variantId here
+      productId: 734618,      // Single Receipt
+      variantId: 1199493,     // Single Receipt variant
       quantity: 1
     }
   };
@@ -4797,11 +4801,6 @@ function animateGlow() {
 
       if (!item) {
           alert("Checkout product is not configured correctly.");
-          return;
-      }
-
-      if (!item.variantId) {
-          alert("Missing SellAuth variantId for this product.");
           return;
       }
 
@@ -4816,14 +4815,17 @@ function animateGlow() {
           return;
       }
 
+      const cartItem = {
+          productId: item.productId,
+          quantity: item.quantity
+      };
+
+      if (item.variantId && item.variantId !== 0) {
+          cartItem.variantId = item.variantId;
+      }
+
       window.sellAuthEmbed.checkout(buttonEl || document.body, {
-          cart: [
-              {
-                  productId: item.productId,
-                  variantId: item.variantId,
-                  quantity: item.quantity
-              }
-          ],
+          cart: [cartItem],
           shopId: SELLAUTH_SHOP_ID,
           modal: true,
           scrollTop: true
@@ -4831,7 +4833,27 @@ function animateGlow() {
   }
   </script>
 
-  <div id="licenseResetModalOverlay" class="modal-overlay">
+  <div class="modal-overlay" id="keyAuthModalOverlay" style="display: none;">
+    <div class="modal-box" style="text-align: center; width: 400px;">
+      <span class="close-btn" onclick="closeKeyAuthModal()">&times;</span>
+      <h2 style="margin-top: 0; font-size: 22px; font-weight: 700; margin-bottom: 12px;">Activate License</h2>
+      <p style="color: #9ca3af; font-size: 14px; margin-bottom: 20px;">Enter your license key to unlock premium features.</p>
+      
+      <div class="form-group">
+        <input type="text" id="keyAuthInput" placeholder="Enter license key..." style="text-align: center; letter-spacing: 1px;">
+      </div>
+      
+      <div id="keyAuthStatus" style="margin-bottom: 15px; font-size: 13px; display: none;"></div>
+      
+      <button onclick="verifyKeyAuthKey()" class="submit-btn" style="margin-top: 0;">Activate</button>
+      
+      <p style="color: #6b7280; font-size: 12px; margin-top: 16px;">
+        Don't have a key? <a href="#" onclick="closeKeyAuthModal(); openUpsell(); return false;" style="color: #3b82f6; text-decoration: none;">Purchase here</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="licenseResetModalOverlay" class="modal-overlay">
     <div class="modal-box" style="width: 520px; max-width: 95%;">
       <span class="close-btn" onclick="closeLicenseResetModal()">×</span>
   
